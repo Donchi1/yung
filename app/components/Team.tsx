@@ -42,7 +42,8 @@ export default function Team() {
     <section className="w-full mt-28 py-20 mb-20 bg-primaryb ">
       <div className="my-container ">
         <div className="flex flex-col justify-center items-center mb-20">
-          <div className="text-center space-y-3 ">
+          <div data-aos="fade-up"
+     data-aos-duration="3000" className="text-center space-y-3 ">
             <Text className="title">Our Team</Text>
             <Text className="head">
               Meet Our Expert Team Members
@@ -55,6 +56,8 @@ export default function Team() {
         </div>
 
         <div
+        data-aos="fade-up"
+        data-aos-duration="3000"
           className="grid lg:grid-cols-3 grid-cols-1 gap-8 place-content-center place-items-center"
         >
           {teamData.slice(0, 3).map(each => (

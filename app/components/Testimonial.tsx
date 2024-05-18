@@ -67,7 +67,8 @@ const Prev = ({ onClick, dont }: ControllerInterface) => (
 ); 
 function Testimonial() {
   return (
-    <section className='w-full min-h-screen mb-20 bg-[#0f171f] py-20'>
+    <section data-aos="fade-up"
+    data-aos-duration="3000" className='w-full min-h-screen mb-20 bg-[#0f171f] py-20'>
        <div className='my-container'>
         <div className='grid lg:grid-cols-2 grid-cols-1 place-items-center gap-20'>
           <div className='bg-center bg-no-repeat bg-cover h-screen w-full ' style={{backgroundImage: "url(/imgs/test_bg.jpg)"}}>

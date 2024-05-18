@@ -12,18 +12,18 @@ function Topbar() {
             <ul className="flex justify-center flex-col lg:flex-row items-start gap-4 text-white">
               <a
                 className="inline-flex items-center gap-x-1"
-                href="mailto:support@ultimatefc.info"
+                href="mailto:support@yungglobal.pro"
               >
                 <Icons.HiMail size={20} className="text-primary-color" />
-                <span className="text-[14px] text-light-color">support@ultimatefc.info</span>
+                <span className="text-[14px] text-light-color">support@yungglobal.pro</span>
               </a>
 
               <a
                 className="inline-flex items-center gap-x-1"
-                href="tel:+447466587402"
+                href="tel:+447778942066"
               >
                 <Icons.HiPhone size={20} className="text-primary-color" />
-                <span className="text-[14px] text-light-color">+447466587402</span>
+                <span className="text-[14px] text-light-color">+447778942066</span>
               </a>
             </ul>
             <div className="flex items-center justify-center gap-6 text-white  bg-inherit">

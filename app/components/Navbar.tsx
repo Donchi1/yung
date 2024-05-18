@@ -2,10 +2,14 @@
 import React, { useEffect, useState } from "react";
 import Topbar from "./Topbar";
 import { FaBarsStaggered } from "react-icons/fa6"
-import { LinkButton } from "./custom/Buttons";
+import { LinkButton, PrimaryButton } from "./custom/Buttons";
+import Modal from "./custom/Modal";
+import Quotation from "./Quotation";
+import Image from "next/image";
 
 function Navbar() {
   const [openBar, setOpenBar] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <>
@@ -14,7 +18,7 @@ function Navbar() {
         <nav className="w-[90%]  mx-auto">
           <div className="flex justify-between items-center pt-2">
             <a href="/">
-              <img className="w-[150px] h-[60px]" src={"/imgs/logo.png"} alt="Logo" />
+              <Image width={100} height={100} className="w-[130px] object-center h-[60px]" src={"/imgs/logo1.png"} alt="Logo" />
             </a>
 
             <button
@@ -56,7 +60,7 @@ function Navbar() {
             </ul>
 
             <ul className="hidden lg:block">
-             <LinkButton to="/quota" title="Get Quota" />
+             <PrimaryButton onClick={() => setOpenModal(true)}  title="Get Quota" />
             </ul>
             <ul
               className={`${!openBar && "-translate-x-full"
@@ -89,6 +93,9 @@ function Navbar() {
           </div>
         </nav>
       </section>
+      <Modal classes={{modalWrapperClassName: "!w-[90%]"}} open={openModal} onClose={() => setOpenModal(false)}>
+        <Quotation />
+      </Modal>
     </>
   );
 }

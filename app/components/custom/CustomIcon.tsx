@@ -9,7 +9,7 @@ interface CustomIconType {
 
 function CustomIcon({icon,className}:CustomIconType) {
   return (
-    <div  className={`${className} bg-primary-color flex justify-center items-center text-light-color rounded-full`}>
+    <div  className={`${className} text-primary-color size-6 flex justify-center items-center bg-light-color/70 rounded-full`}>
       {icon}  
     </div>
   )

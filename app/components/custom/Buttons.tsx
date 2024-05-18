@@ -1,4 +1,6 @@
 import React, { MouseEventHandler } from 'react'
+import CustomIcon from './CustomIcon'
+import { ImSpinner3 } from 'react-icons/im'
 
 
 interface BtnInterface {
@@ -6,6 +8,8 @@ interface BtnInterface {
    onClick?: MouseEventHandler<HTMLElement>
    className?: string
    disabled?: boolean
+   showLoadingIcon?: React.ReactNode
+   type?: "submit" | "reset" | "button"
 }
 
 
@@ -16,10 +20,10 @@ interface LinkButtonInterface extends BtnInterface {
 
 
 
-
-export const PrimaryButton = ({title,className, onClick}:BtnInterface) => {
+export const PrimaryButton = ({title,className, onClick, type,showLoadingIcon}:BtnInterface) => {
   return (
-    <button onClick={onClick} className={`${className} text-center py-2 min-w-32 hover:text-main-bg inline-block rounded-full text-light-color capitalize hover:bg-light-color bg-primary-color  transition-all ease-linear duration-500`}>
+    <button type={type} onClick={onClick} className={`${className}  text-center py-2 min-w-32 hover:text-main-bg flex justify-center items-center gap-2 rounded-full text-light-color capitalize hover:bg-light-color bg-primary-color  transition-all ease-linear duration-500`}>
+      {showLoadingIcon && <CustomIcon icon={<ImSpinner3 className="animate-spin" />} />}
       {title}
     </button>
   )

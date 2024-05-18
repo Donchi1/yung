@@ -11,7 +11,8 @@ const config: Config = {
     colors:{
       "main-bg": "#0B1117",
       "primary-color": "#ff493b",
-      "light-color" : "#fbfafa"
+      "light-color" : "#fbfafa",
+      "sec-bg" : "#0f171f"
     },
     fontFamily: {
       sans: ['var(--font-manrope)']

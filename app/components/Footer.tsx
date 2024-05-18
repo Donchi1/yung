@@ -13,6 +13,8 @@ import { ImSpinner3 } from 'react-icons/im'
 //import { auth, db } from '@/db/firebaseConfig'
 import Toast from '@/utils/Alert'
 import CustomIcon from './custom/CustomIcon'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
+import { db } from '@/db/firebaseDb'
 //import { useAuthStore } from '@/app/store/authStore'
 
 
@@ -43,28 +45,24 @@ function Footer() {
   });
 
   const handleSubmitSub = async (val: { email: string }) => {
-    formik.setSubmitting(true);
-    const { email } = val;
 
-    // try {
-    //   //await makeRequestApi.post("/newsletter", val)
-    //   await addDoc(collection(db, "newsletters"), {
-    //     newsLetter: email,
-    //     uid: auth.currentUser ? auth.currentUser?.uid : Date.now(),
-    //     status: "success",
-    //     date: serverTimestamp(),
-    //     user: currentUser ? currentUser?.firstname : "Guest User"
-    //   });
-    //   formik.setSubmitting(false);
-    //   formik.resetForm();
-    //   Toast.success.fire({
-    //     text: "Thanks for subscribing for our newsletter.",
-    //   });
-    // } catch (err) {
-    //   formik.setSubmitting(false);
-    //   formik.resetForm();
-    //   Toast.success.fire({ text: "An error occured you can check your email address" });
-    // }
+    try {
+      await addDoc(collection(db, "subcribers"), {
+        email: val.email,
+        idx: Date.now().toString(),
+        date: serverTimestamp(),
+        username: "Guest",
+      });
+      formik.resetForm()
+      Toast.success.fire({
+        text: "Thanks for subcribing to our platform",
+      });
+    } catch (error) {
+      formik.resetForm()
+      Toast.error.fire({
+        text: "Something went wrong",
+      });
+    }
   };
 
 
@@ -74,7 +72,7 @@ function Footer() {
         <div className='flex justify-between gap-10 lg:gap-32 flex-col lg:flex-row min-h-[60vh]'>
           <div data-aos="fade-right" data-aos-delay="300" data-aos-easing="linear" className='space-y-5 flex-1'>
 
-            <Image className='w-[200px]' src={"/imgs/logo.png"} width={400} height={400} alt='logo' />
+            <Image className='w-[130px]' src={"/imgs/logo1.png"} width={100} height={100} alt='logo' />
             <div className='space-y-2'>
               <Text>
                 All you need for your fast, global and easy
@@ -119,7 +117,7 @@ function Footer() {
               <div className={`${formik.touched.email && formik.errors.email? "focus-within:shadow-red-300": "focus-within:shadow-main-color" } text-white relative flex w-full items-center focus-within:shadow-[0px_1px_10px_-1px_#00000024]  transition-colors ease-linear duration-500 outline-none bg-transparent border-gray-700 border rounded-full`}>
                 <Input className='!border-none !border-0 ' type='email'  {...formik.getFieldProps("email")} placeholder='Enter Email' />
                 <button type='submit' className=' absolute right-0'>
-                  <CustomIcon icon={formik.isSubmitting ? <ImSpinner3 size={25} className='animate-spin' /> : <BsSend size={25} />} className='size-[52px]'  />
+                  <CustomIcon  icon={formik.isSubmitting ? <ImSpinner3 size={25} className='animate-spin' /> : <BsSend size={25} />} className='size-[52px] !text-light-color !bg-primary-color'  />
                 </button>
               </div>
 
